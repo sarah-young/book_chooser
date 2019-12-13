@@ -13,10 +13,15 @@ Go to GitHub Clone the repo into while in your directory. GitHub Clone
 `git clone <repo_name>`
 
 Create Your Environment Within Your Cloned Repo (2)
+
 Set up an environment using virtual env
+
 Install: `python3 -m pip install --user virtualenv`
+
 Create: `python3 -m venv env`
+
 Activate: `source env/bin/activate`
+
 More information: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
 
 Pip Install (3)
