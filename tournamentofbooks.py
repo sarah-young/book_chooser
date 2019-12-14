@@ -55,6 +55,7 @@ def run_prompts():
                 number_of_books = number_of_books = len(books)
                 print("OK, I've removed that book from your library. There are now %s books to choose from." % number_of_books)
             if book_response == 'exit':
+                print("It's been fun browsing, goodbye!")
                 break
 
 if __name__ == "__main__":
