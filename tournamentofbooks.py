@@ -1,11 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
 from random import randrange
-import time
 
 def random_book(books, number_of_books):
     "Chooses a random book from a list."
-    _index = randrange(0, number_of_books-1)
+    _index = randrange(number_of_books-1)
     print()
     print()
     print("How about this book?")
@@ -27,15 +26,15 @@ def get_book_list():
             books.append({"title": title_and_author, "url": url})
     return books
 
-def run_prompts():
-    books = get_book_list()
+def first_question(books):
     number_of_books = len(books)
-    print("There are " + str(number_of_books) + " books to choose from.")
-    print("Would you like to choose a book? (y/n): ")
-    chosen_input = input()
+    return "There are " + str(number_of_books) + " books to choose from. \nWould you like to choose a book? (y/n): "
+
+def handle_answer(chosen_input, books):
     if chosen_input == 'n':
         print("OK, goodbye.")
     if chosen_input == 'y':
+        number_of_books = len(books)
         choosing_a_book = True
         while choosing_a_book == True:
             selected_book = random_book(books, number_of_books)
@@ -45,8 +44,15 @@ def run_prompts():
                 choosing_a_book = False
             if book_chosen == 'ar':
                 books.pop(selected_book)
-                number_of_books = number_of_books = len(books)
+                number_of_books = len(books)
                 print("OK, I've removed that book from your library. There are now " + str(number_of_books) + " books to choose from.")
+
+def run_prompts():
+    books = get_book_list()
+    message = first_question(books)
+    print(message)
+    chosen_input = input()
+    handle_answer(chosen_input, books)
 
 if __name__ == "__main__":
     run_prompts()
